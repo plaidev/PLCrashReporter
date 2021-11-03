@@ -1,0 +1,61 @@
+name: "Create XCFramework and Deploy Swift-PM"
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Configure Git
+        run: |
+          git config user.email "git@users.noreply.github.com"
+          git config user.name "github actions"
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@b8c74de753fbcb4868bf2011fb2e15826ce973af # コミットハッシュを指定
+        with:
+          aws-region: ap-northeast-1
+          role-to-assume: arn:aws:iam::161473449094:role/ProductionNativeSdkRole
+          role-session-name: MySessionName
+      - name: Select Xcode version
+        run: sudo xcode-select -s '/Applications/Xcode_12.4.app'
+      - name: Create XCFramework
+        run: xcodebuild -configuration Release -target 'CrashReporter'
+      - name: Replace XCFramework
+        run: |
+          rm -rf CrashReporter.xcframework
+          cp -pR build/Release/CrashReporter.xcframework ./
+          zip -r CrashReporter.xcframework.zip CrashReporter.xcframework
+      - name: Get Release Version
+        id: release-version
+        run: |
+          gem install fastlane
+          version=`fastlane run version_get_podspec | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?" | head -n1`
+          echo "::set-output name=version::${version}"
+      - name: Upload XCFramework to aws s3
+        run: |
+          aws sts get-caller-identity
+          aws s3 ls s3://production-native-sdk/
+          version=${{ steps.release-version.outputs.version }}
+          aws s3 cp ./CrashReporter.xcframework.zip s3://production-native-sdk/ios/swiftpm/CrashReporter-${version}/ --acl public-read
+      - name: Replace Package.swift
+        run: |
+          rm Package.swift
+          cp KarteTemplate-Package.swift Package.swift
+          version=${{ steps.release-version.outputs.version }}
+
+          url="https:\/\/sdk.karte.io\/ios\/swiftpm\/CrashReporter-${version}\/CrashReporter.xcframework.zip"
+          checksum=$(swift package compute-checksum ./CrashReporter.xcframework.zip)
+
+          sed -i "" "s/<__URL__>/url: \"${url}\"/g" "./Package.swift"
+          sed -i "" "s/<__CHECKSUM__>/checksum: \"${checksum}\"/g" "./Package.swift"
+      - name: Update Swift-PM manifest file
+        run: |
+          git add Package.swift
+          git add CrashReporter.xcframework
+          git commit -m "[skip ci] Update xcframework"
+          git push origin "${GITHUB_HEAD_REF}"
