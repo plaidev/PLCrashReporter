@@ -45,7 +45,7 @@ jobs:
       - name: Replace Package.swift
         run: |
           rm Package.swift
-          cp KarteTemplate-Package.swift Package.swift
+          cp .KarteTemplate-Package.swift Package.swift
           version=${{ steps.release-version.outputs.version }}
 
           url="https:\/\/sdk.karte.io\/ios\/swiftpm\/CrashReporter-${version}\/CrashReporter.xcframework.zip"
