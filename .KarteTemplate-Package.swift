@@ -10,11 +10,11 @@ let package = Package(
         .tvOS(.v9)
     ],
     products: [
-        .library(name: "PLCrashReporter", targets: ["PLCrashReporter"])
+        .library(name: "PLCrashReporter", targets: ["CrashReporter"])
     ],
     targets: [
         .binaryTarget(
-            name: "PLCrashReporter",
+            name: "CrashReporter",
             <__URL__>,
             <__CHECKSUM__>
         ),
