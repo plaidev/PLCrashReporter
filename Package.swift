@@ -1,4 +1,4 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.3
 
 import PackageDescription
 
@@ -10,38 +10,13 @@ let package = Package(
         .tvOS(.v9)
     ],
     products: [
-        .library(name: "CrashReporter", targets: ["CrashReporter"])
+        .library(name: "PLCrashReporter", targets: ["CrashReporter"])
     ],
     targets: [
-        .target(
+        .binaryTarget(
             name: "CrashReporter",
-            path: "",
-            exclude: [
-                "Source/dwarf_opstream.hpp",
-                "Source/dwarf_stack.hpp",
-                "Source/PLCrashAsyncDwarfCFAState.hpp",
-                "Source/PLCrashAsyncDwarfCIE.hpp",
-                "Source/PLCrashAsyncDwarfEncoding.hpp",
-                "Source/PLCrashAsyncDwarfExpression.hpp",
-                "Source/PLCrashAsyncDwarfFDE.hpp",
-                "Source/PLCrashAsyncDwarfPrimitives.hpp",
-                "Source/PLCrashAsyncLinkedList.hpp",
-                "Source/PLCrashReport.proto"
-            ],
-            sources: [
-                "Source",
-                "Dependencies/protobuf-c"
-            ],
-            cSettings: [
-                .define("PLCR_PRIVATE"),
-                .define("PLCF_RELEASE_BUILD"),
-                .define("PLCRASHREPORTER_PREFIX", to: ""),
-                .define("SWIFT_PACKAGE"), // Should be defined by default, Xcode 11.1 workaround.
-                .headerSearchPath("Dependencies/protobuf-c")
-            ],
-            linkerSettings: [
-                .linkedFramework("Foundation")
-            ]
-        )
+            url: "https://sdk.karte.io/ios/swiftpm/CrashReporter-1.8.2/CrashReporter.xcframework.zip",
+            checksum: "cb55431dd5095e37c1b0186a69143055291a01ccb1d65753dc8cb94498b3b2f4"
+        ),
     ]
 )
