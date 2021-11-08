@@ -25,6 +25,20 @@ jobs:
           role-session-name: MySessionName
       - name: Select Xcode version
         run: sudo xcode-select -s '/Applications/Xcode_12.4.app'
+      - name: Get Release Version
+        id: release-version
+        run: |
+          gem install fastlane
+          version=`fastlane run version_get_podspec | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?" | head -n1`
+          echo "::set-output name=version::${version}"
+      - name: Check if it has already been released
+        run: |
+          git fetch
+          version=${{ steps.release-version.outputs.version }}
+          if [ `git tag | grep "${version}-patch"` ]; then
+            echo "Please bump up version number!!"
+            exit 1
+          fi
       - name: Create XCFramework
         run: xcodebuild -configuration Release -target 'CrashReporter'
       - name: Checkout Head Branch
@@ -37,12 +51,6 @@ jobs:
           rm -rf CrashReporter.xcframework
           cp -pR build/Release/CrashReporter.xcframework ./
           zip -r CrashReporter.xcframework.zip CrashReporter.xcframework
-      - name: Get Release Version
-        id: release-version
-        run: |
-          gem install fastlane
-          version=`fastlane run version_get_podspec | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?" | head -n1`
-          echo "::set-output name=version::${version}"
       - name: Upload XCFramework to aws s3
         run: |
           aws sts get-caller-identity
