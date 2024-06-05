@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
   spec.cocoapods_version = ">= 1.10"
   spec.name         = "KarteCrashReporter"
-  spec.version      = "1.11.0"
+  spec.version      = "1.11.2"
   spec.summary      = "Fork of the Plausible Labs PLCrashReporter repo."
   spec.description  = "This fork contains code that is not part of the core PLCrashReporter distribution.  This software is not provided by or maintained by Plausible Labs."
 

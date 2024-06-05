@@ -1,8 +1,19 @@
 # PLCrashReporter Change Log
 
-## Version 1.11.1 (Under development)
+## Version 1.11.2
+
+* **[Improvement]** Update PLCrashReporter to include privacy manifest.
+* **[Improvement]** Increase the maximum report size to 1MB.
+
+___
+
+## Version 1.11.1
 
 * **[Improvement]** Disable treating warnings as errors in code to avoid blockers when new Xcode warnings are introduced.
+* **[Improvement]** Add caught exception logging to PLCrashReporter to generate reports from specific exception.
+* **[Improvement]** Fix Interface declarations of instance variables (OBJC_INTERFACE_IVARS) warnings.
+
+___
 
 ## Version 1.11.0
 
