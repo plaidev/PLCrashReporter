@@ -3,14 +3,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "PLCrashReporter",
+    name: "KarteCrashReporter",
     platforms: [
         .iOS(.v11),
         .macOS(.v10_10),
         .tvOS(.v11)
     ],
     products: [
-        .library(name: "PLCrashReporter", targets: ["CrashReporter"])
+        .library(name: "KarteCrashReporter", targets: ["CrashReporter"])
     ],
     targets: [
         .binaryTarget(
