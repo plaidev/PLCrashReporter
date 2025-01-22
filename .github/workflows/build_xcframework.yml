@@ -49,22 +49,24 @@ jobs:
       - name: Replace XCFramework
         run: |
           rm -rf CrashReporter.xcframework
+          rm -rf KarteCrashReporter.xcframework
           cp -pR build/Release/CrashReporter.xcframework ./
-          zip -r CrashReporter.xcframework.zip CrashReporter.xcframework
+          cp -r CrashReporter.xcframework KarteCrashReporter.xcframework
+          zip -r KarteCrashReporter.xcframework.zip KarteCrashReporter.xcframework
       - name: Upload XCFramework to aws s3
         run: |
           aws sts get-caller-identity
           aws s3 ls s3://production-native-sdk/
           version=${{ steps.release-version.outputs.version }}
-          aws s3 cp ./CrashReporter.xcframework.zip s3://production-native-sdk/ios/swiftpm/CrashReporter-${version}/ --acl public-read
+          aws s3 cp ./KarteCrashReporter.xcframework.zip s3://production-native-sdk/ios/swiftpm/KarteCrashReporter-${version}/ --acl public-read
       - name: Replace Package.swift
         run: |
           rm Package.swift
           cp .KarteTemplate-Package.swift Package.swift
           version=${{ steps.release-version.outputs.version }}
 
-          url="https:\/\/sdk.karte.io\/ios\/swiftpm\/CrashReporter-${version}\/CrashReporter.xcframework.zip"
-          checksum=$(swift package compute-checksum ./CrashReporter.xcframework.zip)
+          url="https:\/\/sdk.karte.io\/ios\/swiftpm\/KarteCrashReporter-${version}\/KarteCrashReporter.xcframework.zip"
+          checksum=$(swift package compute-checksum ./KarteCrashReporter.xcframework.zip)
 
           sed -i "" "s/<__URL__>/url: \"${url}\"/g" "./Package.swift"
           sed -i "" "s/<__CHECKSUM__>/checksum: \"${checksum}\"/g" "./Package.swift"
@@ -72,5 +74,6 @@ jobs:
         run: |
           git add Package.swift
           git add CrashReporter.xcframework
+          git add KarteCrashReporter.xcframework
           git commit -m "[skip ci] Update xcframework"
           git push
