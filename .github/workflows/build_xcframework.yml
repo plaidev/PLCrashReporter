@@ -24,7 +24,7 @@ jobs:
           role-to-assume: arn:aws:iam::161473449094:role/ProductionNativeSdkRole
           role-session-name: MySessionName
       - name: Select Xcode version
-        run: sudo xcode-select -s '/Applications/Xcode_14.2.app'
+        run: sudo xcode-select -s '/Applications/Xcode_15.4.app'
       - name: Get Release Version
         id: release-version
         run: |
