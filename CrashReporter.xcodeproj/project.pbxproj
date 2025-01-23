@@ -3785,6 +3785,7 @@
 				DEFINES_MODULE = YES;
 				GENERATE_MASTER_OBJECT_FILE = YES;
 				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = Resources/CrashReporter.modulemap;
 				OTHER_CFLAGS = "-fembed-bitcode-marker";
@@ -3809,6 +3810,7 @@
 				DEFINES_MODULE = YES;
 				GENERATE_MASTER_OBJECT_FILE = YES;
 				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = Resources/CrashReporter.modulemap;
 				OTHER_CFLAGS = "-fembed-bitcode-marker";
