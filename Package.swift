@@ -3,20 +3,20 @@
 import PackageDescription
 
 let package = Package(
-    name: "PLCrashReporter",
+    name: "KarteCrashReporter",
     platforms: [
-        .iOS(.v11),
+        .iOS(.v12),
         .macOS(.v10_10),
         .tvOS(.v11)
     ],
     products: [
-        .library(name: "PLCrashReporter", targets: ["CrashReporter"])
+        .library(name: "KarteCrashReporter", targets: ["KarteCrashReporter"])
     ],
     targets: [
         .binaryTarget(
-            name: "CrashReporter",
-            url: "https://sdk.karte.io/ios/swiftpm/CrashReporter-1.11.0/CrashReporter.xcframework.zip",
-            checksum: "533796f22a31a418d63b719bfba092569f50c81bbc288e9fd3549c3f6c695c5b"
+            name: "KarteCrashReporter",
+            url: "https://sdk.karte.io/ios/swiftpm/KarteCrashReporter-1.12.0/KarteCrashReporter.xcframework.zip",
+            checksum: "e6a79c85bd7337fd938cafa56b2d8d02ab8a31bb59eed92dd294295bc495522e"
         ),
     ]
 )

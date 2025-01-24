@@ -1,5 +1,10 @@
 # PLCrashReporter Change Log
 
+## Version 1.12.0
+
+* **[Improvement]** Update minimum deployment target to 12.0
+* **[Fix]** Forked from plaidev/PLCrashReporter to fix SPM build issue caused by duplication of library name `plcrashreporter`
+
 ## Version 1.11.1 (Under development)
 
 * **[Improvement]** Disable treating warnings as errors in code to avoid blockers when new Xcode warnings are introduced.

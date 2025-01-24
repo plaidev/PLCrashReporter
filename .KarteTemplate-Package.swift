@@ -3,18 +3,18 @@
 import PackageDescription
 
 let package = Package(
-    name: "PLCrashReporter",
+    name: "KarteCrashReporter",
     platforms: [
-        .iOS(.v11),
+        .iOS(.v12),
         .macOS(.v10_10),
         .tvOS(.v11)
     ],
     products: [
-        .library(name: "PLCrashReporter", targets: ["CrashReporter"])
+        .library(name: "KarteCrashReporter", targets: ["KarteCrashReporter"])
     ],
     targets: [
         .binaryTarget(
-            name: "CrashReporter",
+            name: "KarteCrashReporter",
             <__URL__>,
             <__CHECKSUM__>
         ),
