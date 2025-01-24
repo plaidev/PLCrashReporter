@@ -40,10 +40,10 @@ jobs:
             echo "Please bump up version number!!"
             exit 1
           fi
-      - name: Setup legacy build tools
-        run: |
-          sudo mkdir /Applications/Xcode-15.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/arc
-          sudo cp legacy_xcbuildtools/*.a /Applications/Xcode-15.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/arc
+          #- name: Setup legacy build tools
+          #run: |
+          #sudo mkdir /Applications/Xcode-15.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/arc
+          #sudo cp legacy_xcbuildtools/*.a /Applications/Xcode-15.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/arc
       - name: Create XCFramework
         run: xcodebuild -configuration Release -target 'CrashReporter'
       - name: Checkout Head Branch
