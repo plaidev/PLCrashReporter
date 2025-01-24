@@ -20,6 +20,7 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios
   spec.ios.deployment_target = "12.0"
 
+  # Keep vendored_frameworks name CrashReporter.xcframework as the binary was built with that name, not KartePLCrashReporter
   spec.source       = { :git => "https://github.com/plaidev/KartePLCrashReporter.git", :tag => "#{spec.version}-patch" }
-  spec.vendored_frameworks = "KarteCrashReporter.xcframework"
+  spec.vendored_frameworks = "CrashReporter.xcframework"
 end
