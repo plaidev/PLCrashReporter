@@ -52,6 +52,7 @@ jobs:
           rm -rf CrashReporter.xcframework
           rm -rf KarteCrashReporter.xcframework
           cp -pR build/Release/CrashReporter.xcframework ./
+          # Copy and rename framework to avoid conflict with older framework path for uploading to S3
           cp -r CrashReporter.xcframework KarteCrashReporter.xcframework
           zip -r KarteCrashReporter.xcframework.zip KarteCrashReporter.xcframework
       - name: Upload XCFramework to aws s3
