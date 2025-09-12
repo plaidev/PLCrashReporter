@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-14-xlarge
+    runs-on: macos-26
     permissions:
       contents: write
       id-token: write
@@ -24,7 +24,7 @@ jobs:
           role-to-assume: arn:aws:iam::161473449094:role/ProductionNativeSdkRole
           role-session-name: MySessionName
       - name: Select Xcode version
-        run: sudo xcode-select -s '/Applications/Xcode_15.4.app'
+        run: sudo xcode-select -s '/Applications/Xcode_26.0.app'
       - name: Get Release Version
         id: release-version
         run: |
