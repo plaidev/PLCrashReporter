@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -490,9 +490,6 @@
 		C2B72B122453496F00D03ABD /* PLCrashReport.pb-c.h in Headers */ = {isa = PBXBuildFile; fileRef = C2B72B0E2453496F00D03ABD /* PLCrashReport.pb-c.h */; };
 		C2B72B132453496F00D03ABD /* PLCrashReport.pb-c.h in Headers */ = {isa = PBXBuildFile; fileRef = C2B72B0E2453496F00D03ABD /* PLCrashReport.pb-c.h */; };
 		C2B72B142453496F00D03ABD /* PLCrashReport.pb-c.h in Headers */ = {isa = PBXBuildFile; fileRef = C2B72B0E2453496F00D03ABD /* PLCrashReport.pb-c.h */; };
-		C2B72B2124534E5200D03ABD /* PLCrashReport.proto in Sources */ = {isa = PBXBuildFile; fileRef = 059670C70EEFAC3A008A0601 /* PLCrashReport.proto */; };
-		C2B72B2224534E5300D03ABD /* PLCrashReport.proto in Sources */ = {isa = PBXBuildFile; fileRef = 059670C70EEFAC3A008A0601 /* PLCrashReport.proto */; };
-		C2B72B2324534E5300D03ABD /* PLCrashReport.proto in Sources */ = {isa = PBXBuildFile; fileRef = 059670C70EEFAC3A008A0601 /* PLCrashReport.proto */; };
 		C2B72B2624534EE700D03ABD /* protobuf-c.h in Headers */ = {isa = PBXBuildFile; fileRef = C2B72B2424534EE700D03ABD /* protobuf-c.h */; };
 		C2B72B2724534EE700D03ABD /* protobuf-c.h in Headers */ = {isa = PBXBuildFile; fileRef = C2B72B2424534EE700D03ABD /* protobuf-c.h */; };
 		C2B72B2824534EE700D03ABD /* protobuf-c.h in Headers */ = {isa = PBXBuildFile; fileRef = C2B72B2424534EE700D03ABD /* protobuf-c.h */; };
@@ -755,104 +752,16 @@
 		C2F7F2B72451FC76002BD8BF /* PLCrashFrameCompactUnwind.h in Headers */ = {isa = PBXBuildFile; fileRef = 05F3CD6416DD6A58007911FB /* PLCrashFrameCompactUnwind.h */; };
 		C2F7F2B92451FC78002BD8BF /* PLCrashFrameCompactUnwind.h in Headers */ = {isa = PBXBuildFile; fileRef = 05F3CD6416DD6A58007911FB /* PLCrashFrameCompactUnwind.h */; };
 		C2F7F2BA2451FC78002BD8BF /* PLCrashFrameCompactUnwind.h in Headers */ = {isa = PBXBuildFile; fileRef = 05F3CD6416DD6A58007911FB /* PLCrashFrameCompactUnwind.h */; };
+		D8160D8A2B7B7FAF0081EBA2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = D8389D722B57FC7F0061D8EF /* PrivacyInfo.xcprivacy */; };
+		D8160D8C2B7B7FC00081EBA2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = D8389D722B57FC7F0061D8EF /* PrivacyInfo.xcprivacy */; };
+		D8160D8E2B7B7FD30081EBA2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = D8389D722B57FC7F0061D8EF /* PrivacyInfo.xcprivacy */; };
+		D8160D902B7B7FE10081EBA2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = D8389D722B57FC7F0061D8EF /* PrivacyInfo.xcprivacy */; };
+		DD9602962D55413C00212FD5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DD9602932D553F5600212FD5 /* libc++.tbd */; };
 		FCE4550BA74D9DF923CFCD5A /* PLCrashFrameStackUnwind.c in Sources */ = {isa = PBXBuildFile; fileRef = FCE45837C8C773EFFD15C52B /* PLCrashFrameStackUnwind.c */; };
 		FCE4586A7041D332D1025F37 /* PLCrashFrameStackUnwind.h in Headers */ = {isa = PBXBuildFile; fileRef = FCE4522F86AC61C08E9DCC17 /* PLCrashFrameStackUnwind.h */; };
 		FCE45962BDFEEEFAF00DA7E4 /* PLCrashFrameStackUnwind.c in Sources */ = {isa = PBXBuildFile; fileRef = FCE45837C8C773EFFD15C52B /* PLCrashFrameStackUnwind.c */; };
 		FCE45B4FD545A258E0292F25 /* PLCrashFrameStackUnwind.h in Headers */ = {isa = PBXBuildFile; fileRef = FCE4522F86AC61C08E9DCC17 /* PLCrashFrameStackUnwind.h */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXBuildRule section */
-		C2B72B1A24534DD200D03ABD /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.proxy.script;
-			filePatterns = "*.proto";
-			fileType = pattern.proxy;
-			inputFiles = (
-			);
-			isEditable = 1;
-			outputFiles = (
-				"${INPUT_FILE_DIR}/${INPUT_FILE_BASE}.pb-c.c",
-				"${INPUT_FILE_DIR}/${INPUT_FILE_BASE}.pb-c.h",
-			);
-			runOncePerArchitecture = 0;
-			script = "if type protoc-c > /dev/null; then\n  cd \"${INPUT_FILE_DIR}\" && protoc-c --c_out=. \"${INPUT_FILE_NAME}\"\nfi\n";
-		};
-		C2B72B2C24534F5C00D03ABD /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.proxy.script;
-			filePatterns = "*.proto";
-			fileType = pattern.proxy;
-			inputFiles = (
-			);
-			isEditable = 1;
-			outputFiles = (
-				"${INPUT_FILE_DIR}/${INPUT_FILE_BASE}.pb-c.c",
-				"${INPUT_FILE_DIR}/${INPUT_FILE_BASE}.pb-c.h",
-			);
-			runOncePerArchitecture = 0;
-			script = "if type protoc-c > /dev/null; then\n  cd \"${INPUT_FILE_DIR}\" && protoc-c --c_out=. \"${INPUT_FILE_NAME}\"\nfi\n";
-		};
-		C2B72B2D24534F6200D03ABD /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.proxy.script;
-			filePatterns = "*.proto";
-			fileType = pattern.proxy;
-			inputFiles = (
-			);
-			isEditable = 1;
-			outputFiles = (
-				"${INPUT_FILE_DIR}/${INPUT_FILE_BASE}.pb-c.c",
-				"${INPUT_FILE_DIR}/${INPUT_FILE_BASE}.pb-c.h",
-			);
-			runOncePerArchitecture = 0;
-			script = "if type protoc-c > /dev/null; then\n  cd \"${INPUT_FILE_DIR}\" && protoc-c --c_out=. \"${INPUT_FILE_NAME}\"\nfi\n";
-		};
-		C2B72B2E24534F6800D03ABD /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.proxy.script;
-			filePatterns = "*.proto";
-			fileType = pattern.proxy;
-			inputFiles = (
-			);
-			isEditable = 1;
-			outputFiles = (
-				"${INPUT_FILE_DIR}/${INPUT_FILE_BASE}.pb-c.c",
-				"${INPUT_FILE_DIR}/${INPUT_FILE_BASE}.pb-c.h",
-			);
-			runOncePerArchitecture = 0;
-			script = "if type protoc-c > /dev/null; then\n  cd \"${INPUT_FILE_DIR}\" && protoc-c --c_out=. \"${INPUT_FILE_NAME}\"\nfi\n";
-		};
-		C2B72B2F24534F6B00D03ABD /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.proxy.script;
-			filePatterns = "*.proto";
-			fileType = pattern.proxy;
-			inputFiles = (
-			);
-			isEditable = 1;
-			outputFiles = (
-				"${INPUT_FILE_DIR}/${INPUT_FILE_BASE}.pb-c.c",
-				"${INPUT_FILE_DIR}/${INPUT_FILE_BASE}.pb-c.h",
-			);
-			runOncePerArchitecture = 0;
-			script = "if type protoc-c > /dev/null; then\n  cd \"${INPUT_FILE_DIR}\" && protoc-c --c_out=. \"${INPUT_FILE_NAME}\"\nfi\n";
-		};
-		C2B72B3024534F6F00D03ABD /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.proxy.script;
-			filePatterns = "*.proto";
-			fileType = pattern.proxy;
-			inputFiles = (
-			);
-			isEditable = 1;
-			outputFiles = (
-				"${INPUT_FILE_DIR}/${INPUT_FILE_BASE}.pb-c.c",
-				"${INPUT_FILE_DIR}/${INPUT_FILE_BASE}.pb-c.h",
-			);
-			runOncePerArchitecture = 0;
-			script = "if type protoc-c > /dev/null; then\n  cd \"${INPUT_FILE_DIR}\" && protoc-c --c_out=. \"${INPUT_FILE_NAME}\"\nfi\n";
-		};
-/* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
 		050DE25C0F61B92C00152ED3 /* PBXContainerItemProxy */ = {
@@ -1261,6 +1170,8 @@
 		C2F7F2302451F081002BD8BF /* DemoCrash-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DemoCrash-iOS-Info.plist"; sourceTree = "<group>"; };
 		C2F7F26A2451F796002BD8BF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C2F7F2BB2451FE1F002BD8BF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS13.4.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D8389D722B57FC7F0061D8EF /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		DD9602932D553F5600212FD5 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		FCE4522F86AC61C08E9DCC17 /* PLCrashFrameStackUnwind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashFrameStackUnwind.h; sourceTree = "<group>"; };
 		FCE45837C8C773EFFD15C52B /* PLCrashFrameStackUnwind.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = PLCrashFrameStackUnwind.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1379,6 +1290,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD9602962D55413C00212FD5 /* libc++.tbd in Frameworks */,
 				C26C52A22451B3F900D20162 /* libCrashReporter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1898,6 +1810,7 @@
 				C2F7F22F2451F081002BD8BF /* DemoCrash-tvOS-Info.plist */,
 				C2DCD87724657B24007322C5 /* DemoCrash-iOS.entitlements */,
 				050DE28D0F61BB1D00152ED3 /* fuzz_report.plcrash */,
+				D8389D722B57FC7F0061D8EF /* PrivacyInfo.xcprivacy */,
 				8DC2EF5A0486A6940098B216 /* Info.plist */,
 				05F3CD6C16DE7625007911FB /* Tests */,
 				05CD32AF0EE94086000FDE88 /* Tests-Info.plist */,
@@ -2039,6 +1952,7 @@
 		F81CF5EE235A0AE20007FA54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DD9602932D553F5600212FD5 /* libc++.tbd */,
 				C2F7F2BB2451FE1F002BD8BF /* Foundation.framework */,
 				C2620D452451CF9400B11E68 /* CoreServices.framework */,
 				C2620D432451CF8B00B11E68 /* Foundation.framework */,
@@ -2433,6 +2347,7 @@
 				058812B41040582D009128FB /* Headers */,
 				058812B61040582D009128FB /* Sources */,
 				058812B71040582D009128FB /* Frameworks */,
+				D8160D8D2B7B7FC80081EBA2 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -2453,7 +2368,6 @@
 				05CD31500EE936A9000FDE88 /* Frameworks */,
 			);
 			buildRules = (
-				C2B72B2C24534F5C00D03ABD /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -2472,7 +2386,6 @@
 				05CD32660EE93DC3000FDE88 /* Frameworks */,
 			);
 			buildRules = (
-				C2B72B2E24534F6800D03ABD /* PBXBuildRule */,
 			);
 			dependencies = (
 				C26C52A52451B45D00D20162 /* PBXTargetDependency */,
@@ -2491,7 +2404,6 @@
 				05CD33220EE94439000FDE88 /* Frameworks */,
 			);
 			buildRules = (
-				C2B72B2F24534F6B00D03ABD /* PBXBuildRule */,
 			);
 			dependencies = (
 				054F50E90EEC50B30034B184 /* PBXTargetDependency */,
@@ -2527,7 +2439,6 @@
 				05E731F10EFA1AAB005EDFB7 /* Frameworks */,
 			);
 			buildRules = (
-				C2B72B1A24534DD200D03ABD /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -2562,6 +2473,7 @@
 				32CF776126DFBB080087748A /* Headers */,
 				32CF777826DFBB080087748A /* Sources */,
 				32CF777A26DFBB080087748A /* Frameworks */,
+				D8160D8B2B7B7FB60081EBA2 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -2584,7 +2496,6 @@
 				8064D8161C4D22D8005A8B4C /* Frameworks */,
 			);
 			buildRules = (
-				C2B72B2D24534F6200D03ABD /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -2600,6 +2511,7 @@
 				8064D8901C4D22E5005A8B4C /* Headers */,
 				8064D8B51C4D22E5005A8B4C /* Sources */,
 				8064D8B61C4D22E5005A8B4C /* Frameworks */,
+				D8160D8F2B7B7FD90081EBA2 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -2620,7 +2532,6 @@
 				8064D98F1C4D27E2005A8B4C /* Frameworks */,
 			);
 			buildRules = (
-				C2B72B3024534F6F00D03ABD /* PBXBuildRule */,
 			);
 			dependencies = (
 				80A63BC11C4D2BE20073B7A3 /* PBXTargetDependency */,
@@ -2655,6 +2566,7 @@
 				8DC2EF500486A6940098B216 /* Headers */,
 				8DC2EF540486A6940098B216 /* Sources */,
 				8DC2EF560486A6940098B216 /* Frameworks */,
+				D8160D892B7B7FA50081EBA2 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -2792,6 +2704,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D8160D892B7B7FA50081EBA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8160D8A2B7B7FAF0081EBA2 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8160D8B2B7B7FB60081EBA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8160D8C2B7B7FC00081EBA2 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8160D8D2B7B7FC80081EBA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8160D8E2B7B7FD30081EBA2 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8160D8F2B7B7FD90081EBA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8160D902B7B7FE10081EBA2 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -2864,6 +2808,7 @@
 		};
 		C25664D523571D3D0088513E /* Generate Documentation */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -2902,6 +2847,7 @@
 		};
 		C2B90DAB2457178800834AFB /* Build iOS Device Framework */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -2921,6 +2867,7 @@
 		};
 		C2C74A842535CCC700313817 /* Build iOS Simulator Framework */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -2940,6 +2887,7 @@
 		};
 		C2C74A892535CD8000313817 /* Combine iOS Universal Framework */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -2959,6 +2907,7 @@
 		};
 		C2C74C9825372B9800313817 /* Build tvOS Device Framework */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -2978,6 +2927,7 @@
 		};
 		C2C74C9925372B9A00313817 /* Build tvOS Simulator Framework */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -2997,6 +2947,7 @@
 		};
 		C2C74C9A25372B9B00313817 /* Combine tvOS Universal Framework */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3016,6 +2967,7 @@
 		};
 		C2C74CBD253730FA00313817 /* Build Mac Catalyst Framework */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3035,6 +2987,7 @@
 		};
 		C2C74DD1253851C300313817 /* Copy Products */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3054,6 +3007,7 @@
 		};
 		C2C74E0825385BCE00313817 /* Combine iOS Universal Library */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3073,6 +3027,7 @@
 		};
 		C2C74E0925385C9700313817 /* Combine tvOS Universal Library */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3092,6 +3047,7 @@
 		};
 		F8B9C72E24695BF200B9FEF6 /* Combine XCFramework */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3177,7 +3133,6 @@
 				05E734FA0EFAE59C005EDFB7 /* PLCrashReportSignalInfo.m in Sources */,
 				2D0E104B1141F7DC00CE1BD6 /* PLCrashReportProcessInfo.m in Sources */,
 				C2DCD88224658A63007322C5 /* mach_exc.defs in Sources */,
-				C2B72B2224534E5300D03ABD /* PLCrashReport.proto in Sources */,
 				054627AC11D998BB007891C7 /* PLCrashReportTextFormatter.m in Sources */,
 				052A46BF1363650100987004 /* PLCrashAsyncImageList.cpp in Sources */,
 				05BB83D01364A77800D53B84 /* PLCrashReportProcessorInfo.m in Sources */,
@@ -3421,7 +3376,6 @@
 				0527062F17CBCCA100E6A5D8 /* PLCrashMachExceptionPort.m in Sources */,
 				05BEC41B17BAF92A0082CBFB /* PLCrashMachExceptionPortSet.m in Sources */,
 				05BEC42617BD4F290082CBFB /* PLCrashAsyncMachExceptionInfo.c in Sources */,
-				C2B72B2124534E5200D03ABD /* PLCrashReport.proto in Sources */,
 				05BEC43A17BF1CB10082CBFB /* PLCrashReporterConfig.m in Sources */,
 				C2B72B0F2453496F00D03ABD /* PLCrashReport.pb-c.c in Sources */,
 				05B929EC17C9336600B051E3 /* PLCrashUncaughtExceptionHandler.m in Sources */,
@@ -3467,7 +3421,6 @@
 				8064D7EA1C4D22D8005A8B4C /* PLCrashAsyncSignalInfo.c in Sources */,
 				8064D7EB1C4D22D8005A8B4C /* PLCrashReportSignalInfo.m in Sources */,
 				8064D7EC1C4D22D8005A8B4C /* PLCrashReportProcessInfo.m in Sources */,
-				C2B72B2324534E5300D03ABD /* PLCrashReport.proto in Sources */,
 				8064D7ED1C4D22D8005A8B4C /* PLCrashReportTextFormatter.m in Sources */,
 				8064D7EE1C4D22D8005A8B4C /* PLCrashAsyncImageList.cpp in Sources */,
 				8064D7EF1C4D22D8005A8B4C /* PLCrashReportProcessorInfo.m in Sources */,
@@ -3931,6 +3884,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				EFFECTIVE_PLATFORM_NAME = "-macosx";
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				PRODUCT_NAME = plcrashutil;
 				SDKROOT = macosx;
 			};
@@ -3941,6 +3895,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				EFFECTIVE_PLATFORM_NAME = "-macosx";
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				PRODUCT_NAME = plcrashutil;
 				SDKROOT = macosx;
 			};
@@ -4075,7 +4030,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.11.0;
+				CURRENT_PROJECT_VERSION = 1.12.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -4100,15 +4055,15 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependencies/protobuf-c\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LIBTOOLFLAGS = "-no_warning_for_no_symbols";
 				PL_SIMULATOR_ARCHS = "i386 x86_64 arm64";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.microsoft.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = CrashReporter;
 				PROTOBUF_C_UNPACK_ERROR = PLCF_DEBUG;
-				TVOS_DEPLOYMENT_TARGET = 11.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Debug;
@@ -4143,7 +4098,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.11.0;
+				CURRENT_PROJECT_VERSION = 1.12.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -4166,14 +4121,14 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependencies/protobuf-c\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				OTHER_LIBTOOLFLAGS = "-no_warning_for_no_symbols";
 				PL_SIMULATOR_ARCHS = "i386 x86_64 arm64";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.microsoft.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = CrashReporter;
 				PROTOBUF_C_UNPACK_ERROR = PLCF_DEBUG;
-				TVOS_DEPLOYMENT_TARGET = 11.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VALIDATE_PRODUCT = YES;
 				WARNING_CFLAGS = "-Wall";
 			};

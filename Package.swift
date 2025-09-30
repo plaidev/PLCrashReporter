@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "PLCrashReporter",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v11),
         .macOS(.v10_10),
