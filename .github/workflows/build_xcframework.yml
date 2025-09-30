@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-14-xlarge
     permissions:
       contents: write
       id-token: write
@@ -18,24 +18,25 @@ jobs:
           git config user.email "git@users.noreply.github.com"
           git config user.name "github actions"
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@b8c74de753fbcb4868bf2011fb2e15826ce973af # コミットハッシュを指定
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: ap-northeast-1
           role-to-assume: arn:aws:iam::161473449094:role/ProductionNativeSdkRole
           role-session-name: MySessionName
       - name: Select Xcode version
-        run: sudo xcode-select -s '/Applications/Xcode_14.2.app'
+        run: sudo xcode-select -s '/Applications/Xcode_15.4.app'
       - name: Get Release Version
         id: release-version
         run: |
           gem install fastlane
           version=`fastlane run version_get_podspec | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?" | head -n1`
-          echo "::set-output name=version::${version}"
+          echo "VERSION=${version}" >> "$GITHUB_OUTPUT"
       - name: Check if it has already been released
+        env:
+          VERSION: ${{ steps.release-version.outputs.VERSION }}
         run: |
           git fetch
-          version=${{ steps.release-version.outputs.version }}
-          if [ `git tag | grep "${version}-patch"` ]; then
+          if [ `git tag | grep "${VERSION}-patch"` ]; then
             echo "Please bump up version number!!"
             exit 1
           fi
@@ -49,22 +50,27 @@ jobs:
       - name: Replace XCFramework
         run: |
           rm -rf CrashReporter.xcframework
+          rm -rf KarteCrashReporter.xcframework
           cp -pR build/Release/CrashReporter.xcframework ./
-          zip -r CrashReporter.xcframework.zip CrashReporter.xcframework
+          # Copy and rename framework to avoid conflict with older framework path for uploading to S3
+          cp -r CrashReporter.xcframework KarteCrashReporter.xcframework
+          zip -r KarteCrashReporter.xcframework.zip KarteCrashReporter.xcframework
       - name: Upload XCFramework to aws s3
+        env:
+          VERSION: ${{ steps.release-version.outputs.VERSION }}
         run: |
           aws sts get-caller-identity
           aws s3 ls s3://production-native-sdk/
-          version=${{ steps.release-version.outputs.version }}
-          aws s3 cp ./CrashReporter.xcframework.zip s3://production-native-sdk/ios/swiftpm/CrashReporter-${version}/ --acl public-read
+          aws s3 cp ./KarteCrashReporter.xcframework.zip s3://production-native-sdk/ios/swiftpm/KarteCrashReporter-${VERSION}/ --acl public-read
       - name: Replace Package.swift
+        env:
+          VERSION: ${{ steps.release-version.outputs.VERSION }}
         run: |
           rm Package.swift
           cp .KarteTemplate-Package.swift Package.swift
-          version=${{ steps.release-version.outputs.version }}
 
-          url="https:\/\/sdk.karte.io\/ios\/swiftpm\/CrashReporter-${version}\/CrashReporter.xcframework.zip"
-          checksum=$(swift package compute-checksum ./CrashReporter.xcframework.zip)
+          url="https:\/\/sdk.karte.io\/ios\/swiftpm\/KarteCrashReporter-${VERSION}\/KarteCrashReporter.xcframework.zip"
+          checksum=$(swift package compute-checksum ./KarteCrashReporter.xcframework.zip)
 
           sed -i "" "s/<__URL__>/url: \"${url}\"/g" "./Package.swift"
           sed -i "" "s/<__CHECKSUM__>/checksum: \"${checksum}\"/g" "./Package.swift"
@@ -72,5 +78,6 @@ jobs:
         run: |
           git add Package.swift
           git add CrashReporter.xcframework
+          git add KarteCrashReporter.xcframework
           git commit -m "[skip ci] Update xcframework"
           git push
