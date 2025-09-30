@@ -47,6 +47,77 @@
 }
 
 /**
+ * Test generation of a 'live' crash report with a provided exception.
+ */
+- (void) testGenerateLiveReportWithException {
+    NSError *error;
+    NSData *reportData;
+    plcrash_test_thread_t thr;
+    
+    /* Spawn a thread and generate a report for it */
+    plcrash_test_thread_spawn(&thr);
+
+    NSException *exc = [NSException exceptionWithName: NSInvalidArgumentException reason: @"Testing" userInfo: nil];
+    PLCrashReporter *reporter = [[PLCrashReporter alloc] initWithConfiguration: [PLCrashReporterConfig defaultConfiguration]];
+    reportData = [reporter generateLiveReportWithThread: pthread_mach_thread_np(thr.thread)
+                                              exception: exc
+                                                  error: &error];
+    plcrash_test_thread_stop(&thr);
+    STAssertNotNil(reportData, @"Failed to generate live report: %@", error);
+    
+    /* Try parsing the result */
+    PLCrashReport *report = [[PLCrashReport alloc] initWithData: reportData error: &error];
+    STAssertNotNil(report, @"Could not parse geneated live report: %@", error);
+    
+    /* Sanity check the signal info */
+    STAssertEqualStrings([[report signalInfo] name], @"SIGTRAP", @"Incorrect signal name");
+    STAssertEqualStrings([[report signalInfo] code], @"TRAP_TRACE", @"Incorrect signal code");
+
+    /* Sanity check the exception info */
+    STAssertNotNil(report.exceptionInfo, @"Missing exception info");
+    STAssertEqualStrings(report.exceptionInfo.exceptionName, exc.name, @"Incorrect exception name");
+    STAssertEqualStrings(report.exceptionInfo.exceptionReason, exc.reason, @"Incorrect exception reason");
+}
+
+/**
+ * Test generation of a 'live' crash report that exceeds maxReportBytes.
+ */
+- (void) testGenerateLiveReportExceedingMaxReportBytes {
+    NSError *error;
+    NSData *reportData;
+    plcrash_test_thread_t thr;
+    NSUInteger maxReportBytes = 1024;
+
+    /* Spawn a thread and generate a report for it */
+    plcrash_test_thread_spawn(&thr);
+
+    NSException *exc = [NSException exceptionWithName: NSInvalidArgumentException reason: @"Testing" userInfo: nil];
+
+    /* CrashReporter config with maximum 1024 bytes to write the crash report */
+    PLCrashReporterConfig * config = [[PLCrashReporterConfig alloc] initWithSignalHandlerType: PLCrashReporterSignalHandlerTypeBSD
+                                                                        symbolicationStrategy: PLCrashReporterSymbolicationStrategyNone
+                                                       shouldRegisterUncaughtExceptionHandler: YES
+                                                                                     basePath: nil
+                                                                               maxReportBytes: maxReportBytes];
+
+    PLCrashReporter *reporter = [[PLCrashReporter alloc] initWithConfiguration: config];
+
+    /* The report exceeds the 1024 bytes defined in the config. */
+    reportData = [reporter generateLiveReportWithThread: pthread_mach_thread_np(thr.thread)
+                                              exception: exc
+                                                  error: &error];
+    plcrash_test_thread_stop(&thr);
+    STAssertNotNil(reportData, @"Failed to generate live report: %@", error);
+
+    /* Try parsing the result */
+    PLCrashReport *report = [[PLCrashReport alloc] initWithData: reportData error: &error];
+    STAssertNil(report, @"Could not parse generated live report: %@", error);
+
+    NSString* errorDescription = [NSString stringWithFormat: @"Could not decode crash report with size of %lu bytes.", (maxReportBytes - sizeof(struct PLCrashReportFileHeader))];
+    STAssertEqualStrings([error localizedDescription], errorDescription, @"Error is not about exceeding MaxReportBytes");
+}
+
+/**
  * Test generation of a 'live' crash report for a specific thread.
  */
 - (void) testGenerateLiveReportWithThread {
