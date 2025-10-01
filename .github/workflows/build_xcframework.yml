@@ -36,7 +36,7 @@ jobs:
           VERSION: ${{ steps.release-version.outputs.VERSION }}
         run: |
           git fetch
-          if [ `git tag | grep "${VERSION}-patch"` ]; then
+          if [ `git tag | grep "${VERSION}"` ]; then
             echo "Please bump up version number!!"
             exit 1
           fi
