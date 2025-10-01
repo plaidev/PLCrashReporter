@@ -1,8 +1,16 @@
 # PLCrashReporter Change Log
 
+## Version 1.13.0(forked)
+
+* **[Improvement]** Update target iOS and tvOS version to 15.0.
+
+___
+
 ## Version 1.12.0-patch
 
 * **[Fix]** Forked from plaidev/PLCrashReporter to fix SPM build issue caused by duplication of library name `plcrashreporter`
+
+___
 
 ## Version 1.12.0
 
