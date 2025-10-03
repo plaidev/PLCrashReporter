@@ -29,7 +29,7 @@ jobs:
         id: release-version
         run: |
           gem install fastlane
-          version=`fastlane run version_get_podspec | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?" | head -n1`
+          version=`fastlane run version_get_podspec path:"./KarteCrashReporter.podspec" | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?" | head -n1`
           echo "VERSION=${version}" >> "$GITHUB_OUTPUT"
       - name: Check if it has already been released
         env:
