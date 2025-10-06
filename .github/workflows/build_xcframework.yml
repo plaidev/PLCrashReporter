@@ -6,44 +6,44 @@ on:
 
 jobs:
   build:
-    runs-on: macos-14-xlarge
+    runs-on: macos-15
     permissions:
       contents: write
       id-token: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Configure Git
         run: |
           git config user.email "git@users.noreply.github.com"
           git config user.name "github actions"
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4.0.2
         with:
           aws-region: ap-northeast-1
           role-to-assume: arn:aws:iam::161473449094:role/ProductionNativeSdkRole
           role-session-name: MySessionName
       - name: Select Xcode version
-        run: sudo xcode-select -s '/Applications/Xcode_15.4.app'
+        run: sudo xcode-select -s '/Applications/Xcode_16.4.app'
       - name: Get Release Version
         id: release-version
         run: |
           gem install fastlane
-          version=`fastlane run version_get_podspec | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?" | head -n1`
+          version=`fastlane run version_get_podspec path:"./KarteCrashReporter.podspec" | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?" | head -n1`
           echo "VERSION=${version}" >> "$GITHUB_OUTPUT"
       - name: Check if it has already been released
         env:
           VERSION: ${{ steps.release-version.outputs.VERSION }}
         run: |
           git fetch
-          if [ `git tag | grep "${VERSION}-patch"` ]; then
+          if [ `git tag | grep "${VERSION}"` ]; then
             echo "Please bump up version number!!"
             exit 1
           fi
       - name: Create XCFramework
         run: xcodebuild -configuration Release -target 'CrashReporter'
       - name: Checkout Head Branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           ref: ${{github.event.pull_request.head.ref}}
           clean: 'false'

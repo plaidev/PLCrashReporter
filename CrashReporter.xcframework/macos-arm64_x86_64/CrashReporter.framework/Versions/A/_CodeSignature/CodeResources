@@ -6,7 +6,11 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		F//5LTVSfBl3x1dFGl75FT7oTo4=
+		YdiRSIAWY6oPQUvuDJSTiymwErI=
+		</data>
+		<key>Resources/PrivacyInfo.xcprivacy</key>
+		<data>
+		O3Zhkkf3uaxqyTk0D3zchR8Gees=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -43,28 +47,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			dmFoK6TXfoq7iBIixwdjMxJLstvZrpaer7NkL4X4N4c=
+			oigM4mGIBgIjHFyhxQlgRc9p15eSCb6EMmhidmtuGSI=
 			</data>
 		</dict>
 		<key>Headers/PLCrashReportApplicationInfo.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7/uQ0EM0lh6buw1mRQ29F6oy0zj/5gfZEFGoq0OH7GM=
+			XIkLxmgrV/OcKL74zyvx2U6E3MdJH5WeqgpbGUgp53c=
 			</data>
 		</dict>
 		<key>Headers/PLCrashReportBinaryImageInfo.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			qPKt+Vpvb5yKwy5YnDVQrtRiUXKDtMTz1eDwJzzWMW8=
+			eT6yTkeiQdmlEeoebligwyWttLMynCgN5RsrIea7ukc=
 			</data>
 		</dict>
 		<key>Headers/PLCrashReportExceptionInfo.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vhn8etGnXpXWwdC5COrFJ9Hc9OkgJHFDk85oWPgyQFc=
+			g8289CCEX4qlqnWK611dsuvo2awGVNM+0755ydof0/c=
 			</data>
 		</dict>
 		<key>Headers/PLCrashReportFormatter.h</key>
@@ -78,91 +82,91 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			JDIeCA5ip7MsJqCN4EqQa8FXR/jPN1C4eMMtv/0HD6s=
+			MrRxfp9H7oPEZl2KxT+nc/vkV5kMN1WBFLkkpNiM/eo=
 			</data>
 		</dict>
 		<key>Headers/PLCrashReportMachineInfo.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wzibgN5Dnn+3NpNUy4RxbLYb22YoN0Ma2xXHf06vLJ8=
+			GjnpbtlgfEWdUY1EtMl0yOWpIuDPqidZNc00hSznKhY=
 			</data>
 		</dict>
 		<key>Headers/PLCrashReportProcessInfo.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			T0EJVBBej8ulfhEtWVUCEXqylnw+QsYmw89lpCw7lF0=
+			MGu1txURe1Rm9AVqwNnOS0gaiplEAbYhFEPySOU9jh0=
 			</data>
 		</dict>
 		<key>Headers/PLCrashReportProcessorInfo.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hYUwvgD28VIk3GLO3Srhz6jgMF1wJBr+ASLY/4DCLww=
+			hDw30bQjvPyRih+4mCcPQ496eD4zFss/ziBxKoPG3xA=
 			</data>
 		</dict>
 		<key>Headers/PLCrashReportRegisterInfo.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9ST+qLa/nu1YnrYtX5mrfHKp/607Xp9MYrbAVshb3l4=
+			8ESmPEtUO7heYCn/Q5Pc3wiwZASuZp44QN5Xxlz4HaI=
 			</data>
 		</dict>
 		<key>Headers/PLCrashReportSignalInfo.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ycVcVPGO+newWVaHBGP7aFg7Y5cZ+UWdkUCF32rPQ+Y=
+			Mmc6hpNWt1Cmq9HmdAElX2cl3PGJGPtJm30AcIgx2HA=
 			</data>
 		</dict>
 		<key>Headers/PLCrashReportStackFrameInfo.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jYlHKqtsD4X4w4c77VfW9ImXG6SonGkWXtapgZeKEiA=
+			ffBRjGecIsMCL2JMrRmss7F5OPSzU45qYDC8TWcIMOY=
 			</data>
 		</dict>
 		<key>Headers/PLCrashReportSymbolInfo.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wm+QGSC8bSqrtAiMqfOsm2QOV3l1nhvw0oX/MH2YBFo=
+			kTTqp5UPEJCgd7/W9c+1Ip8NxKhm7EIQGHYoViZ0o7c=
 			</data>
 		</dict>
 		<key>Headers/PLCrashReportSystemInfo.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			V+uaKx4KohhYCu8yqRGnAJKUHwkU3bA01/O8v9HD/L0=
+			I5Yum7r87ccS+ON0vjh8ge7e/olRNfJHGYcFgldj0aM=
 			</data>
 		</dict>
 		<key>Headers/PLCrashReportTextFormatter.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LxFU3hM5fCT+Puo1F44kuMORirDWpjTNzFL6BeSuF2k=
+			HHkcwWLWo7ugEPsWp+ZjORM+2Fuwr/+78P6gf1tie9U=
 			</data>
 		</dict>
 		<key>Headers/PLCrashReportThreadInfo.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			b9XzFC1Nsx92T55WvW6cgS+3lvR8Eai7PbajhGslveA=
+			5rRisSdeN73nu5ZYLWH+Q9LsqbEyvqNxksnmJrcRMck=
 			</data>
 		</dict>
 		<key>Headers/PLCrashReporter.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			MjiFmkmhz4BGxTOfPVT0oXC5byRt84lYTGU9/w7dYEA=
+			qslLDp0AN8qDtIiTfd6V3zvWCRj4XfpuAw944AJ6BDY=
 			</data>
 		</dict>
 		<key>Headers/PLCrashReporterConfig.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			83lSiMTxSMjOEnuD5nLWABoJKG/yc8G9UIKT8Mm6Ngg=
+			aDohYxjcZ95qruvz9Z/ZDSv+4CrhQ1N8VkyAY9J1dWM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -176,7 +180,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			M6RSnzWNJZFWigqicIRUZrrBiHXXVANBGT75NN7z6/Q=
+			8p1e1BytxZ806uwfUYVEJVJ1Gw7ZVG3LZ84AjVwvcyM=
+			</data>
+		</dict>
+		<key>Resources/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			WdWnMSNl52vRPwKNpI8BQV9PUBP0rC8ybQKoTQJKewI=
 			</data>
 		</dict>
 	</dict>

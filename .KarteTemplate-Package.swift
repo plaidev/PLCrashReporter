@@ -5,9 +5,9 @@ import PackageDescription
 let package = Package(
     name: "KarteCrashReporter",
     platforms: [
-        .iOS(.v12),
-        .macOS(.v10_10),
-        .tvOS(.v11)
+        .iOS(.v15),
+        .macOS(.v13),
+        .tvOS(.v15)
     ],
     products: [
         .library(name: "KarteCrashReporter", targets: ["KarteCrashReporter"])
